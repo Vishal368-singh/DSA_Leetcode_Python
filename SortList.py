@@ -22,9 +22,29 @@ class ListNode:
             temp = temp.next
         print("None")
 
+    def sortList(self, head):
+        temp = head
+        li=[]
+        while(temp):
+            li.append(temp.val)
+            temp = temp.next
+        li = sorted(li)
+        if not li:
+            return None 
+        head1 = ListNode(li[0])
+        temp = head1
+        for i in li[1:]:
+            newNode = ListNode(i)
+            temp.next = newNode 
+            temp = temp.next
+        return head1
+
 lis = ListNode()
 head = None
 input_data = input("Enter the list: ")
 for num in input_data.split(","):
     head = lis.insert(int(num), head)
+lis.show(head)
+head = lis.sortList(head)
+print("Sort List:")
 lis.show(head)
